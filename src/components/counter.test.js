@@ -7,6 +7,8 @@ describe('Counter component', () => {
         const wrapper = shallow(<Counter />);
         const incrementBtn = wrapper.find('button.increment');
         incrementBtn.simulate('click');
+        const text = wrapper.find('h2');
+        expect(text).toHaveLength(1);   
     });
 });
 
