@@ -9,3 +9,11 @@ describe('Counter component', () => {
         expect(text).toHaveLength(1);
     });
 });
+
+describe('Counter component', () => {
+    it('finds 1 h1 tag in Header', () => {
+        const wrapper = shallow(<Header />);
+        const text = wrapper.find('h1').text();
+        expect(text).toEqual('Counter App');
+    });
+});

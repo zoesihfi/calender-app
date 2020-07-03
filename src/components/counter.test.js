@@ -19,3 +19,29 @@ describe('Counter component decrement', () => {
         decrementBtn.simulate('click');
     });
 });
+
+describe('Counter component', () => {
+    it('makes sure result message (decrement) shows', () => {
+        const wrapper = shallow(<Counter />);
+        const decrementBtn = wrapper.find('button.decrement');
+        decrementBtn.simulate('click');
+        decrementBtn.simulate('click');
+        decrementBtn.simulate('click');
+        
+        const text = wrapper.find('h3').text();
+        expect(text).toEqual("Limit Reached");   
+    });
+});
+
+describe('Counter component', () => {
+    it('makes sure result message (increment) shows', () => {
+        const wrapper = shallow(<Counter />);
+        const incrementBtn = wrapper.find('button.increment');
+        incrementBtn.simulate('click');
+        incrementBtn.simulate('click');
+        incrementBtn.simulate('click');
+        
+        const text = wrapper.find('h3').text();
+        expect(text).toEqual("Limit Reached"); 
+    });
+});

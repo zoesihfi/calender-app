@@ -9,3 +9,12 @@ describe('Footer component', () => {
         expect(text).toHaveLength(1);
     });
 });
+
+describe('Footer component', () => {
+    it('checks text 1 in Footer', () => {
+        const wrapper = shallow(<Footer />);
+        const text = wrapper.find('h3').text();
+        expect(text).toEqual('Did You Reach Your Limit?');
+    });
+});
+

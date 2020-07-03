@@ -5,7 +5,8 @@ export default class Counter extends Component {
         super(props);
         this.state = {
         count: 0,
-        result: null
+        result: null,
+        message: ""
     }
 }
 
@@ -18,7 +19,14 @@ decrement = (x) => {
 }
 
 findResult = (x) => {
-    if (x >= 3) {
+    if (x >= 3 ) {
+        return "Limit Reached";
+    } else
+        return "";
+}
+
+decFindResult = (x) => {
+    if (x <= 0) {
         return "Limit Reached";
     } else
         return "";
@@ -27,6 +35,7 @@ findResult = (x) => {
 handleClickIncrement = () => {
     const currentCount = this.increment(this.state.count);
     const currentResult = this.findResult(currentCount);
+    
 
     if(currentCount > 3){
         this.setState({
@@ -34,7 +43,7 @@ handleClickIncrement = () => {
         result: ""
     })
     } else
-
+        
         this.setState({
         count: currentCount,
         result: currentResult
@@ -43,29 +52,29 @@ handleClickIncrement = () => {
 
 handleClickDecrement = () => {
     const currentCount = this.decrement(this.state.count);
-    const currentResult = this.findResult(currentCount);
+    const currentResult = this.decFindResult(currentCount);
+   
 
     if(currentCount < 0){
         this.setState({
         count: 0,
-        result: ""
+        result: currentResult
     })
     } else
 
         this.setState({
         count: currentCount,
-        result: currentResult
+        result: ""
     })
 }
 
-render() { // (4)
+render() { 
     const currCount = this.state.count;
     const result = this.state.result;
-    return ( // (5)
+    return ( 
         <div className="counter">
             <h2 className="current-count">{currCount}</h2>
             <h3 className="result" style={{color:"red"}}>{result}</h3>
-
             <button className="increment" onClick={this.handleClickIncrement}>Increase</button>
             <button className="decrement" onClick={this.handleClickDecrement}>Decrease</button>
     </div>
